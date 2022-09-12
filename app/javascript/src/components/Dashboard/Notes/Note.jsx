@@ -5,13 +5,20 @@ import AvatarProfile from "images/AvatarProfile";
 import { MenuVertical, Clock } from "neetoicons";
 import { Typography, Tag, Avatar, Dropdown, Tooltip } from "neetoui";
 
-const Note = ({ note }) => (
+const Note = ({ note, setShowDeleteAlert, setSelectedNoteIds }) => (
   <div className="mb-3 w-full border border-gray-300 p-4 shadow-md">
     <div className="flex justify-between">
       <Typography style="h4">{note.title}</Typography>
       <Dropdown buttonStyle="text" icon={MenuVertical}>
         <li>Edit</li>
-        <li>Delete</li>
+        <li
+          onClick={() => {
+            setShowDeleteAlert(true);
+            setSelectedNoteIds(note.id);
+          }}
+        >
+          Delete
+        </li>
       </Dropdown>
     </div>
     <div className="mb-2 mt-1">
@@ -47,4 +54,5 @@ const Note = ({ note }) => (
     </div>
   </div>
 );
+
 export default Note;
