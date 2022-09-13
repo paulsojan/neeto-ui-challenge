@@ -3,8 +3,8 @@ import * as yup from "yup";
 export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
-  contact: "",
-  tag: "",
+  contact: null,
+  tag: null,
 };
 
 export const NOTES_TABLE_COLUMN_DATA = [
@@ -102,7 +102,7 @@ export const TAGS = [
   },
 ];
 
-export const CONTACT = [
+export const ROLES = [
   {
     label: "User",
     value: "user",
@@ -124,10 +124,14 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .nullable()
     .required("Assigned Contact is required."),
   tag: yup
-    .object({
-      label: yup.string().required(),
-      value: yup.string().required(),
-    })
+    .array()
+    .of(
+      yup.object().shape({
+        label: yup.string().required(),
+        value: yup.string().required(),
+      })
+    )
     .nullable()
+    .min(1, "Tag is required")
     .required("Tag is required."),
 });
