@@ -6,9 +6,10 @@ import { Container, Header } from "neetoui/layouts";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
+import Menu from "components/Dashboard/Menu";
 
+import { MENUBAR_DATA, MENUBAR_TITLE } from "./constants";
 import DeleteAlert from "./DeleteAlert";
-import Menu from "./Menu";
 import Note from "./Note";
 import NewNotePane from "./Pane/Create";
 
@@ -43,7 +44,11 @@ const Notes = () => {
 
   return (
     <>
-      <Menu showMenu={menuBarOpen} />
+      <Menu
+        menuData={MENUBAR_DATA}
+        menuTitle={MENUBAR_TITLE}
+        showMenu={menuBarOpen}
+      />
       <Container>
         <Header
           menuBarToggle={() => setMenuBarOpen(open => !open)}

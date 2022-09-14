@@ -4,15 +4,14 @@ import { Search, Settings, Plus } from "neetoicons";
 import { Typography } from "neetoui";
 import { MenuBar } from "neetoui/layouts";
 
-import { MENUBAR_DATA } from "./constants";
-
-const Menu = ({ showMenu }) => {
+const Menu = ({ menuData, showMenu, menuTitle }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
+  const { title } = menuTitle;
 
   return (
     <div className="flex">
-      <MenuBar showMenu={showMenu} title="Notes">
-        {MENUBAR_DATA.global.map(menubarItems => (
+      <MenuBar showMenu={showMenu} title={title}>
+        {menuData.global.map(menubarItems => (
           <MenuBar.Block
             active={menubarItems.active}
             count={menubarItems.count}
@@ -44,7 +43,7 @@ const Menu = ({ showMenu }) => {
           collapse={isSearchCollapsed}
           onCollapse={() => setIsSearchCollapsed(true)}
         />
-        {MENUBAR_DATA.segments.map(menubarItems => (
+        {menuData.segments.map(menubarItems => (
           <MenuBar.Block
             count={menubarItems.count}
             key={menubarItems.label}
@@ -73,7 +72,7 @@ const Menu = ({ showMenu }) => {
             Tags
           </Typography>
         </MenuBar.SubTitle>
-        {MENUBAR_DATA.tags.map(menubarItems => (
+        {menuData.tags.map(menubarItems => (
           <MenuBar.Block
             count={menubarItems.count}
             key={menubarItems.label}
