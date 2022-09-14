@@ -22,6 +22,10 @@ export const NOTES_TABLE_COLUMN_DATA = [
   },
 ];
 
+export const MENUBAR_TITLE = {
+  title: "Notes",
+};
+
 export const MENUBAR_DATA = {
   global: [
     {
