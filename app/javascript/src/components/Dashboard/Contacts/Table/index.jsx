@@ -2,14 +2,14 @@ import React from "react";
 
 import { Table as NeetoUITable } from "neetoui";
 
-import { TABLE_COLUMN_DATA } from "./TableColumn";
+import { tableColumnData } from "./TableColumn";
 
 import { TABLE_ROW_DATA } from "../constants";
 
-const Table = () => (
+const Table = ({ setShowDeleteAlert }) => (
   <NeetoUITable
     allowRowClick
-    columnData={TABLE_COLUMN_DATA}
+    columnData={tableColumnData(setShowDeleteAlert)}
     rowData={TABLE_ROW_DATA}
     onRowClick={() => {}}
   />
