@@ -122,8 +122,8 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
   description: yup.string().required("Description is required"),
   contact: yup
     .object({
-      label: yup.string().required(),
-      value: yup.string().required(),
+      label: yup.string().oneOf(ROLES.map(role => role.label)),
+      value: yup.string().oneOf(ROLES.map(role => role.value)),
     })
     .nullable()
     .required("Assigned Contact is required."),
@@ -131,8 +131,8 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .array()
     .of(
       yup.object().shape({
-        label: yup.string().required(),
-        value: yup.string().required(),
+        label: yup.string().oneOf(TAGS.map(tag => tag.label)),
+        value: yup.string().oneOf(TAGS.map(tag => tag.value)),
       })
     )
     .min(1, "Tag is required")

@@ -88,9 +88,10 @@ export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
   lastName: yup.string().required("Last Name is required"),
   email: yup.string().email("Email is invalid").required("Email is required"),
   role: yup
-    .object({
-      label: yup.string().required(),
-      value: yup.string().required(),
+    .object()
+    .shape({
+      label: yup.string().oneOf(ROLES.map(role => role.label)),
+      value: yup.string().oneOf(ROLES.map(role => role.value)),
     })
     .nullable()
     .required("Role is required."),
