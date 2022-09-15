@@ -1,9 +1,9 @@
 import React from "react";
 
 import { MenuHorizontal } from "neetoicons";
-import { Avatar, Typography } from "neetoui";
+import { Avatar, Typography, Dropdown } from "neetoui";
 
-export const TABLE_COLUMN_DATA = [
+export const tableColumnData = setShowDeleteAlert => [
   {
     title: "Name & Role",
     dataIndex: "name",
@@ -43,6 +43,11 @@ export const TABLE_COLUMN_DATA = [
     dataIndex: "options",
     key: "options",
     width: "10",
-    render: () => <MenuHorizontal />,
+    render: () => (
+      <Dropdown buttonStyle="text" icon={MenuHorizontal}>
+        <li>Edit</li>
+        <li onClick={setShowDeleteAlert}>Delete</li>
+      </Dropdown>
+    ),
   },
 ];

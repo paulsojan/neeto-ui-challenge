@@ -1,4 +1,12 @@
 import JacobProfile from "images/JacobProfile";
+import * as yup from "yup";
+
+export const CONTACT_INITIAL_VALUES = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  role: null,
+};
 
 export const MENUBAR_DATA = {
   global: [
@@ -63,3 +71,27 @@ export const TABLE_ROW_DATA = [
     profile: JacobProfile,
   },
 ];
+
+export const ROLES = [
+  {
+    label: "User",
+    value: "user",
+  },
+  {
+    label: "Admin",
+    value: "admin",
+  },
+];
+
+export const CONTACT_FORM_VALIDATION_SCHEMA = yup.object().shape({
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
+  email: yup.string().email("Email is invalid").required("Email is required"),
+  role: yup
+    .object({
+      label: yup.string().required(),
+      value: yup.string().required(),
+    })
+    .nullable()
+    .required("Role is required."),
+});

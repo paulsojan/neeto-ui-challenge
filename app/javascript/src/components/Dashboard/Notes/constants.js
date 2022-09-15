@@ -4,7 +4,7 @@ export const NOTES_FORM_INITIAL_FORM_VALUES = {
   title: "",
   description: "",
   contact: null,
-  tag: null,
+  tag: [],
 };
 
 export const NOTES_TABLE_COLUMN_DATA = [
@@ -135,7 +135,6 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
         value: yup.string().required(),
       })
     )
-    .nullable()
     .min(1, "Tag is required")
     .required("Tag is required."),
 });
